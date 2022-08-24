@@ -66,6 +66,12 @@ input{
 input::placeholder{
     font-style: italic;
 }
+
+
+
+
+
+
 .chat{
     width: 100%;
     margin-top: 85px;
@@ -75,9 +81,6 @@ ul > li{
     align-items: center;
     margin-top: 4px;
 }
-
-
-
 .join{
     background-color: #DCDCDC;
 }
@@ -92,4 +95,7 @@ ul > li{
 }
 .usuario{
     font-weight: bold;
+}
+.mensagem{
+    margin-left: 3px;
 }
