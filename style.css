@@ -1,0 +1,93 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap');
+
+
+body{
+    background-color: #747474;
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px;
+
+}
+
+.container{
+    background-color: #F3F3F3;
+    width: 375px;
+    height: 1200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+}
+.bottom-bar, .top-bar{
+    background-color: #FFF;
+    position: fixed;
+    z-index: 1;
+}
+.top-bar{
+    width: 375px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.bottom-bar{
+    width: 375px;
+    height: 80px;
+    bottom: 0px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+img{
+    width: 75px;
+    margin-left: 22px;
+}
+.people{
+    font-size: 50px;
+    margin-right: 24px;
+}
+.paper-plane{
+    font-size: 26px;
+    margin-right: 27px;
+}
+input{
+    width: 265px;
+    height: 50px;
+    margin-left: 17px;
+    border: 0;
+    cursor: text;
+    border-radius: 10px;
+    display: flex;
+    flex-wrap: wrap;
+}
+input::placeholder{
+    font-style: italic;
+}
+.chat{
+    width: 100%;
+    margin-top: 85px;
+}
+
+ul > li{
+    display: flex;
+    align-items: center;
+    margin-top: 4px;
+}
+
+.join{
+    background-color: #DCDCDC;
+}
+.hora{
+    display: inline-block;
+    height: 40px;
+    width: 70px;
+    display: flex;
+    align-items: center;
+    margin-left: 8px;
+    color: #AAA;
+}
+.usuario{
+    font-weight: bold;
+}
