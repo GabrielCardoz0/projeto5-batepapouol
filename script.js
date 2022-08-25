@@ -1,9 +1,8 @@
-
 let dados;
 
 let user;
 
-/*function newUser(){
+function newUser(){
     user = 
     {
         name: prompt("Digite seu nome de usuário:")
@@ -59,8 +58,8 @@ function naochegou(resposta){
 }
 
 
+/*--------------Parte das mensagens do servidor--------------------------------*/
 
-*/
 
 const request = axios.get('https://mock-api.driven.com.br/api/v6/uol/messages');
 request.then(msgChegou);
@@ -82,11 +81,9 @@ function adicionarATela(resposta){
     console.log(mensagens);
 
     const chat = document.querySelector('.chat');
-    let hora = document.querySelector('.hora');
     let msg;
 
     for(let i = 0; i < mensagens.length; i++){
-
 
         if(mensagens[i].type == 'status'){
         msg =`<li class="join">
@@ -96,9 +93,7 @@ function adicionarATela(resposta){
 
         chat.innerHTML = chat.innerHTML + msg;
         
-
         } else if (mensagens[i].type == 'message'){
-
             msg = `<li class="message">
             <span class="hora">(${mensagens[i].time})</span>
             <span class="usuario">${mensagens[i].from}</span>
@@ -107,8 +102,45 @@ function adicionarATela(resposta){
         </li>`
             chat.innerHTML = chat.innerHTML + msg;
             //msg.scrollIntoView();
+        } else if (mensagens[i].type == 'private_message'){
+            msg = `<li class="message">
+            <span class="hora">(${mensagens[i].time})</span>
+            <span class="usuario">${mensagens[i].from}</span>
+            para<span class="usuario">${mensagens[i].to}:</span>
+            ${mensagens[i].text}
+        </li>`
+            chat.innerHTML = chat.innerHTML + msg;
         }
-    
     }
 }
 
+
+/*-------Parte do envio de mensagens para o servidor--------------------------------*/
+
+
+let input = document.querySelector('input');
+
+function enviarMensagem(){
+    MensagemAEnviar = `{
+        from: "${user}",
+        to: "Todos",
+        text: "${input.value}",
+        type: "message" 
+    }`;
+    console.log(MensagemAEnviar);
+
+    
+
+    const enviarMensagem = axios.post('https://mock-api.driven.com.br/api/v6/uol/messages', MensagemAEnviar);
+    enviarMensagem.then(MensagemEnviada);
+    enviarMensagem.catch(MensagemNaoEnviada);
+}
+
+function MensagemEnviada(resposta){
+    input.value = '';
+    console.log('Mensagem enviada');
+}
+function MensagemNaoEnviada(resposta){
+    console.log(resposta.response.status);
+    alert('Mensagem não enviada');
+}
