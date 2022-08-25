@@ -1,9 +1,9 @@
 
 let dados;
 
-let user = '';
+let user;
 
-function newUser(){
+/*function newUser(){
     user = 
     {
         name: prompt("Digite seu nome de usuário:")
@@ -19,7 +19,7 @@ function verificarUser(){
 }
 
 function tratarSucesso(resposta){
-    console.log('Dado enviado com sucesso');
+    console.log('Nome de usuário enviado com sucesso');
     let ul = document.querySelector('.chat');
     ul.innerHTML = ul.innerHTML +
     `<li class="join">
@@ -51,11 +51,64 @@ promessa.then(chegou);
 promessa.catch(naochegou);
 
 function chegou(resposta){
-    console.log('os dados chegaram');
-    console.log(resposta.data);
+    //console.log('os dados de nomes de usuário chegaram');
+    //console.log(resposta.data);
+}
+function naochegou(resposta){
+    console.log('os dados de nomes de usuário não chegaram');
 }
 
-function naochegou(resposta){
-    console.log('os dados não chegaram');
+
+
+*/
+
+const request = axios.get('https://mock-api.driven.com.br/api/v6/uol/messages');
+request.then(msgChegou);
+request.catch(msgNaoChegou);
+
+function msgChegou(resposta){
+    //console.log('as mensagens chegaram:');
+    adicionarATela(resposta);
+    }
+function msgNaoChegou(resposta){
+    console.log('As mensagens não chegaram');
+}
+
+
+let mensagens;
+
+function adicionarATela(resposta){
+    mensagens = resposta.data;
+    console.log(mensagens);
+
+    const chat = document.querySelector('.chat');
+    let hora = document.querySelector('.hora');
+    let msg;
+
+    for(let i = 0; i < mensagens.length; i++){
+
+
+        if(mensagens[i].type == 'status'){
+        msg =`<li class="join">
+        <span class="hora">(${mensagens[i].time})</span>
+        <span class="mensagem"><span class="usuario">${mensagens[i].from}</span>
+        ${mensagens[i].text}</span></li>`;
+
+        chat.innerHTML = chat.innerHTML + msg;
+        
+
+        } else if (mensagens[i].type == 'message'){
+
+            msg = `<li class="message">
+            <span class="hora">(${mensagens[i].time})</span>
+            <span class="usuario">${mensagens[i].from}</span>
+            para<span class="usuario">todos:</span>
+            ${mensagens[i].text}
+        </li>`
+            chat.innerHTML = chat.innerHTML + msg;
+            //msg.scrollIntoView();
+        }
+    
+    }
 }
 

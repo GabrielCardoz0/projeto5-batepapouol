@@ -1,3 +1,9 @@
+*{
+    box-sizing: border-box;
+}
+
+
+
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap');
 
 
@@ -14,7 +20,6 @@ body{
 .container{
     background-color: #F3F3F3;
     width: 375px;
-    height: 1200px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -84,18 +89,26 @@ ul > li{
 .join{
     background-color: #DCDCDC;
 }
+.message{
+    background-color: #FFF;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 10px;
+}
+
+
+
+
+
+
 .hora{
-    display: inline-block;
     height: 40px;
-    width: 70px;
+    width: 65px;
     display: flex;
     align-items: center;
-    margin-left: 8px;
     color: #AAA;
 }
-.usuario{
+.usuario{  /*trocar o nome para 'bold*/
     font-weight: bold;
-}
-.mensagem{
-    margin-left: 3px;
+    margin: 0 3px;
 }
