@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="PT-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,11 +10,12 @@
 
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
     <div class="container">
         <div class="top-bar">
             <img src="./imagens/bpuol_lembra_400x400.gif" alt="">
-            <ion-icon class="people"name="people"></ion-icon>
+            <ion-icon class="people" name="people"></ion-icon>
         </div>
 
         <ul class="chat">
@@ -31,8 +33,8 @@
         </ul>
 
         <div class="bottom-bar">
-            <input type="text" placeholder="Digite aqui..." >
-            <ion-icon class="paper-plane"name="paper-plane-outline" onclick="enviarMensagem()"></ion-icon>
+            <input type="text" placeholder="Digite aqui..." onkeypress="cliqueiEnter(event)">
+            <ion-icon class="paper-plane" name="paper-plane-outline" onclick="enviarMensagem()"></ion-icon>
         </div>
     </div>
 
@@ -45,4 +47,5 @@
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="script.js"></script>
 </body>
+
 </html>
